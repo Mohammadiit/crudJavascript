@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+
+
+
+
+
+npm install --save @angular/material @angular/cdk @angular/animations hammerjs
+
+   div.container{
+      display: none;
+      position: fixed;
+      width:100%;
+      height: 100%;
+      top:0;
+      left:0;
+
+     background-color: rgba(0,0,0,.3);
+     padding-top: 10%;
+      z-index: 1;
+
+    }
+    .close{
+      float: right;
+      font-size: 30px;
+      cursor: grab;
+    }
+
+    .content{
+      background-color: wheat;
+      width: 50%;
+      margin-top: 1%;
+      margin-left: 18%;
+      padding: 20px;
+
+    }
+    input{
+      width: 50%;
+      padding: 25px;
+      margin-right: 50px;
+      border-radius: 10px;
+    }
+    button{
+      background-color: brown;
+      padding: 10px 20px;
+      color: white;
+    }
+    .b1{
+      width: 50%;
+      border-radius: 10px;
+      /*float: top right;*/
+    }
+
+  </style>
+</head>
+<body>
+<!--<div class="relative">-->
+<h2>Modal Example</h2>
+
+<!-- Trigger/Open The Modal -->
+<button id="myBtn">Open Modal</button>
+<br>
+<br>
+
+<div ></div>
+<!--<table style="width:100%">-->
+  <!--<tr>-->
+    <!--<th>Brand name</th>-->
+    <!--<th>Model</th>-->
+    <!--<th>Action</th>-->
+  <!--</tr>-->
+<p id="b"></p>
+</table>
+<!-- The Modal -->
+<!--<div class="relative">-->
+  <div id="myModal" class="container">
+
+    <!-- Modal content -->
+    <div class="content">
+      <span class="close">&times;</span>
+      <form name="myForm">
+        Brand name:<br>
+        <input type="text" name="fname" autocomplete="off" value=""><br>
+        Model name:<br>
+        <input type="text" name="lname" autocomplete="off" value=""><br>
+        Engine type:<br>
+        <input type="text" name="ename" autocomplete="off" value=""><br>
+        Chesis type:<br>
+        <input type="text" name="cname" autocomplete="off" value=""><br><br><br>
+        <button type="button" onclick="validateForm()" class="b1">submit</button>
+
+      </form>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  // Check browser support
+  var first=0;
+  if(first==0){
+    // debugger;
+    f1();
+    first=1;
+  }
+  function f1() {
+    // debugger
+    if (typeof(Storage) !== "undefined") {
+      // Store
+      // localStorage.setItem("lastname", "Smith");
+      // Retrieve
+      var objects =JSON.parse(localStorage.getItem("savedData"));
+      // for
+      var i;
+      var text="<table 'width:100%'><tr><th>'Brandname'</th><th>'Model'<th>'Action'</th></tr>";
+      for(i=0;i<objects.length;++i){
+        // debugger;
+        const temp = i;
+
+        text+="<tr><td>"+objects[i].name+"</td>";
+        text+="<td>"+objects[i].age+"</td>"+"<td>"+ `<button onclick='editFunc(${temp})'>` + "edit" + "</button>"+  `<button onclick='deleteFunc(${temp})'>` + "delete" + "</button></td></tr>";
+        // debugger;
+      }
+      text+="</table>"
+      document.getElementById("b").innerHTML = text;
+      // debugger;
+    } else {
+      document.getElementById("b").innerHTML = "Sorry, your browser does not support Web Storage...";
+    }
+  }
+
+</script>
+  <script src="js/main.js"></script>
+
+
+</body>
+
+</html>
+
+
+
